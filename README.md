@@ -1,58 +1,72 @@
 # Claude Code Gemini API Proxy 🚀
 
-**Unlock free, unlimited usage of Claude Code CLI using Google's Gemini 3 Pro / Flash models.**
+**Unlock free, unlimited usage of Claude Code CLI using Google's Gemini 3 models.**
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D18-green.svg)
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos-lightgrey.svg)
 
-This proxy bridges the [Claude Code CLI](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) to Google's Cloud Code API, allowing you to use **Gemini 3 Pro** (High Reasoning) and **Gemini 3 Flash** for free, without an Anthropic subscription.
+This proxy bridges the [Claude Code CLI](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) to Google's Cloud Code API. It allows you to use the latest Claude model names while routing them to **Gemini 3 Pro** (High Reasoning) and **Gemini 3 Flash** for free execution.
 
 ## ✨ Key Features
 
-- **💸 Free Access**: Leverages Google Cloud Code's currently free internal API.
-- **🧠 Thinking Mode**: Full support for "thinking" blocks, just like Claude 3.7 Sonnet.
-- **🔄 Smart Fallback**: Automatically switches to **Gemini 3 Flash** if the Pro model is rate-limited (429). Never get stuck!
-- **🛠️ Tool Use Fixed**: Includes proprietary `thought_signature` handling to ensure complex tool use works perfectly.
-- **⚡ High Performance**: Streaming support with direct mapping to `gemini-3-pro` and `gemini-3-flash`.
+### 🧠 Advanced Model Support
+Supports the latest "Thinking" models by mapping them to Gemini 3 Pro High Reasoning:
+- **Claude 3.7 Sonnet** (`claude-thinking-3-7`)
+- **Claude 4.6 Opus** (`claude-opus-4-6`)
+- **Gemini 3 Pro** (`gemini-3-pro`)
+
+### 🔄 Smart Fallback & Reliability
+- **Auto-Switching**: If `Gemini 3 Pro` hits a rate limit (429), the proxy automatically retries the request using **Gemini 3 Flash**.
+- **No Interruptions**: You never get stuck with "Overloaded" errors; the work continues seamlessly.
+
+### 🛠️ Enhanced Tool Use
+- **Thought Signatures**: Includes proprietary handling for Gemini's `thought_signature`, ensuring complex tool-use chains working perfectly where other proxies fail.
+- **Streaming**: Full real-time streaming support.
 
 ## 📦 Installation
 
-1.  **Clone this repository**:
-    ```bash
-    git clone https://github.com/SovranAMR/claude-code-gemini-api.git
-    cd claude-code-gemini-api
-    ```
+### 1. Clone Repository
+```bash
+git clone https://github.com/SovranAMR/claude-code-gemini-api.git
+cd claude-code-gemini-api
+```
 
-2.  **Authenticate with Google**:
-    You need to be logged in to Google Cloud. If you have `gcloud` installed:
-    ```bash
-    gcloud auth application-default login
-    ```
-    *Alternatively, copy your existing `.antigravity-claude-bridge.json` or similar credentials to `~/.claude-code-google-credentials.json`.*
+### 2. Authenticate
+You need to be logged in to Google Cloud. If you have `gcloud` installed:
+```bash
+gcloud auth application-default login
+```
+*Alternatively, place your valid `application_default_credentials.json` at `~/.claude-code-google-credentials.json`.*
 
-3.  **Install Claude Code** (if you haven't):
-    ```bash
-    npm install -g @anthropic-ai/claude-code
-    ```
+### 3. Install Claude Code
+If you haven't already:
+```bash
+npm install -g @anthropic-ai/claude-code
+```
 
 ## 🚀 Usage
 
-Simply run the start script:
+Simply run the start script. It handles everything:
 
 ```bash
 bash start.sh
 ```
 
-This will:
-1.  Start the local proxy on port `51200`.
-2.  Configure Claude Code to use `http://localhost:51200`.
-3.  Launch the CLI with `gemini-3-pro` selected.
+### What it does:
+1.  **Starts Proxy**: Launches the local bridge on port `51200`.
+2.  **Configures CLI**: Points Claude Code to `http://localhost:51200`.
+3.  **Launches Interface**: Starts Claude Code with **Gemini 3 Pro** selected.
 
-### Troubleshooting
+## ⚙️ Configuration
 
-- **Rate Limits**: If you see "Rate limit detected", the proxy automatically retries with Flash. You don't need to do anything!
-- **Permissions**: The script uses `--dangerously-skip-permissions` for a smoother experience. Remove it from `start.sh` if you prefer manual approval.
+You can request different models in Claude Code, and they will be mapped automatically:
+
+| Claude Model Name Requested | Mapped To (Google) | Description |
+| :--- | :--- | :--- |
+| `claude-opus-4-6-thinking` | **Gemini 3 Pro** | High Reasoning / Thinking Mode |
+| `claude-sonnet-3-7` | **Gemini 3 Pro** | Fast / Balanced |
+| `claude-3-5-haiku` | **Gemini 3 Flash** | Ultra-Fast / Fallback |
 
 ## 🤝 Contributing
 

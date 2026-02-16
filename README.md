@@ -1,19 +1,22 @@
 # Claude Code Gemini API Proxy 🚀
 
+> [!WARNING]
+> **🚨 Disclaimer**: This project is an unofficial proxy tool intended strictly for **educational and personal use**. It is not affiliated with Google or Anthropic. Using this tool may violate their Terms of Service and could result in your account being banned. **Use at your own risk.**
+
 **Unlock free, unlimited usage of Claude Code CLI using Google's Gemini 3 models.**
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D18-green.svg)
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20macos-lightgrey.svg)
 
-This proxy bridges the [Claude Code CLI](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) to Google's Cloud Code API. It allows you to use the latest Claude model names while routing them to **Gemini 3 Pro** (High Reasoning) and **Gemini 3 Flash** for free execution.
+This proxy bridges the [Claude Code CLI](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) to Google's Cloud Code API. It allows you to use the latest, most advanced Claude model names (including **4.6** and **3.7**) while routing them to **Gemini 3 Pro** (High Reasoning) and **Gemini 3 Flash** for free execution.
 
 ## ✨ Key Features
 
-### 🧠 Advanced Model Support
-Supports the latest "Thinking" models by mapping them to Gemini 3 Pro High Reasoning:
-- **Claude 3.7 Sonnet** (`claude-thinking-3-7`)
+### 🧠 Advanced Model Support (Future-Proof)
+Supports the absolute latest "Thinking" model definitions by mapping them to Gemini 3 Pro High Reasoning:
 - **Claude 4.6 Opus** (`claude-opus-4-6`)
+- **Claude 3.7 Sonnet** (`claude-thinking-3-7`)
 - **Gemini 3 Pro** (`gemini-3-pro`)
 
 ### 🔄 Smart Fallback & Reliability
@@ -56,7 +59,7 @@ bash start.sh
 ### What it does:
 1.  **Starts Proxy**: Launches the local bridge on port `51200`.
 2.  **Configures CLI**: Points Claude Code to `http://localhost:51200`.
-3.  **Launches Interface**: Starts Claude Code with **Gemini 3 Pro** selected.
+3.  **Launches Interface**: Starts Claude Code with **Gemini 3 Pro** (emulating Claude 4.6 capabilities) selected.
 
 ## ⚙️ Configuration
 
